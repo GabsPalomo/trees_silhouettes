@@ -35,15 +35,23 @@ plot1 <- ggplot(data = trees,
                     ymax = upperCI),
                 width = 0.2,
                 position=position_dodge(.9))+
+  geom_hline(yintercept = 45, linetype = "twodash", color = "grey70")+
+  geom_hline(yintercept = 40, linetype = "twodash", color = "grey70")+
+  geom_hline(yintercept = 35, linetype = "twodash", color = "grey70")+
+  geom_hline(yintercept = 20, linetype = "twodash", color = "grey70")+
   theme_classic()+
-  theme(axis.text.x = element_text(angle = 0),
+  labs(y = "Height (m)")+
+  theme(axis.title.x = element_blank(),
         legend.position = "bottom",
-        legend.text = element_text(size=10),
-        legend.title = element_text(size = 10),
+        legend.title = element_blank(),
         legend.key.size = unit(0.5, "line"))+
-  scale_x_discrete(position = "top") +
+  scale_x_discrete(position = "top",
+                   labels = c("Cedrus_libani" = "Cedrus libani",
+                              "Persea_borbonia" = "Persea borbonia", 
+                              "Pinus_elliottii" = "Pinus elliotti",
+                              "Pinus_taeda" = "Pinus taeda"))+
   add_phylopic(cedrus,alpha = 0.2, x = 1, y = 10, ysize = 20)+
-  add_phylopic(persea, alpha = 0.2, x = 2, y = 15, ysize = 35)+
+  add_phylopic(persea, alpha = 0.2, x = 2, y = 17, ysize = 35)+
   add_phylopic(pinus, alpha = 0.2, x = 3, y = 20, ysize = 40)+
   add_phylopic(pinus, alpha = 0.2, x = 4, y = 22.5, ysize = 45)
 plot1
